@@ -7,7 +7,7 @@ const AdminThird: FC<IAdminThirdProps> = ({}) => {
   useMemo(() => {}, [])
   useEffect(() => {}, [])
 
-  return <div>content</div>
+  return <div>AdminThird</div>
 }
 
 export default AdminThird

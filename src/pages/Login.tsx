@@ -1,35 +1,31 @@
-// import React, { FC } from 'react';
-// import { Link, useNavigate } from 'react-router-dom';
-
-// export interface IHomePageProps {}
-
-// const HomePage: FC<IHomePageProps> = (props) => {
-//     const navigate = useNavigate();
-//     return (
-//         <div>
-//             <p>This is the home page.</p>
-//             <p>
-//                 <Link to="/about">Go to the About Page!</Link>
-//             </p>
-//             <p>
-//                 <Link to="/test">Go to the Test Page!</Link>
-//             </p>
-//             <button onClick={() => navigate('/layout/55')}>Go to layout, with a number</button>
-//         </div>
-//     );
-// };
-
-// export default HomePage;
 import { FC, useState, useEffect, useCallback, useMemo } from 'react'
+import '../style/login.css'
 
-export interface IHomeProps {}
+export interface ILoginProps {}
 
-const Home: FC<IHomeProps> = ({}) => {
+const Login: FC<ILoginProps> = ({}) => {
+  // const [msg, setMsg] = useState<string>('default msg: hellow world')
+  // const [avatar, setAvatar] = useState<string>('')
+
   useCallback(() => {}, [])
   useMemo(() => {}, [])
   useEffect(() => {}, [])
 
-  return <div>content</div>
+  return (
+    <div className="login">
+      <div className="login_btn">
+        <button>Click me to login Admin</button>
+
+        <button>Click me to login Guest</button>
+      </div>
+
+      {/* <div className="login_img">
+        <img style={{ display: avatar ? 'block' : 'none' }} src={avatar} />
+      </div>
+
+      <p className="login_content">{msg}</p> */}
+    </div>
+  )
 }
 
-export default Home
+export default Login

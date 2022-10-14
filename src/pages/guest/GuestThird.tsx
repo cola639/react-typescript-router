@@ -7,7 +7,7 @@ const GuestThird: FC<IGuestThirdProps> = ({}) => {
   useMemo(() => {}, [])
   useEffect(() => {}, [])
 
-  return <div>content</div>
+  return <div>GuestThird</div>
 }
 
 export default GuestThird

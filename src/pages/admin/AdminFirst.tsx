@@ -7,7 +7,7 @@ const AdminFirst: FC<IAdminFirstProps> = ({}) => {
   useMemo(() => {}, [])
   useEffect(() => {}, [])
 
-  return <div>content</div>
+  return <div>AdminFirst</div>
 }
 
 export default AdminFirst

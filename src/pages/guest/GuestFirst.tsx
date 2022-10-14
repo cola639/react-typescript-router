@@ -7,7 +7,7 @@ const GuestFirst: FC<IGuestFirstProps> = ({}) => {
   useMemo(() => {}, [])
   useEffect(() => {}, [])
 
-  return <div>content</div>
+  return <div>GuestFirst</div>
 }
 
 export default GuestFirst
