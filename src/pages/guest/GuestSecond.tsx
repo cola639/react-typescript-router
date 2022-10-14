@@ -1,13 +1,13 @@
-import { FC, useState, useEffect, useCallback, useMemo } from 'react';
+import { FC, useState, useEffect, useCallback, useMemo } from 'react'
 
 export interface IGuestSecondProps {}
 
 const GuestSecond: FC<IGuestSecondProps> = ({}) => {
-    useCallback(() => {}, []);
-    useMemo(() => {}, []);
-    useEffect(() => {}, []);
+  useCallback(() => {}, [])
+  useMemo(() => {}, [])
+  useEffect(() => {}, [])
 
-    return <div>content</div>;
-};
+  return <div>content</div>
+}
 
-export default GuestSecond;
+export default GuestSecond
