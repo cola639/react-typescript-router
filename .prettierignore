@@ -3,7 +3,7 @@
 CODEOWNERS
 .dockerignore
 Dockerfile.ui-test
-package.json
+
 .umi
 .umi-production
 AUTHORS.txt
