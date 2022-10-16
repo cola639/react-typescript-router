@@ -19,12 +19,15 @@ const {
   GuestThird
 } = routeList
 
-const routes: RouteMetaObject[] = [
+export const baseRoutes: RouteMetaObject[] = [
   {
-    path: '/login',
+    path: '/',
     element: <Login />,
     children: []
-  },
+  }
+]
+
+export const asyncRoutes: RouteMetaObject[] = [
   {
     path: '/layout',
     element: <LayoutComponent />,
@@ -68,5 +71,3 @@ const routes: RouteMetaObject[] = [
     ]
   }
 ]
-
-export default routes
