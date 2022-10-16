@@ -7,7 +7,21 @@ const AdminSecond: FC<IAdminSecondProps> = ({}) => {
   useMemo(() => {}, [])
   useEffect(() => {}, [])
 
-  return <div>AdminSecond</div>
+  return (
+    <div
+      style={{
+        border: 2,
+        padding: 2,
+        borderColor: 'black',
+        borderStyle: 'dashed',
+        margin: 5,
+        width: 500,
+        height: 500
+      }}
+    >
+      AdminSecond
+    </div>
+  )
 }
 
 export default AdminSecond

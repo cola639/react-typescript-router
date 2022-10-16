@@ -5,7 +5,7 @@ import { WithChildrenProps } from './generalTypes'
 export type Token = string | null
 
 const RequireAuth: React.FC<WithChildrenProps> = ({ children }) => {
-  const token: Token = ''
+  const token: Token = 'admin'
 
   return token ? <>{children}</> : <Navigate to="/login" />
 }

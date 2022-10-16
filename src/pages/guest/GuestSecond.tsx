@@ -7,7 +7,21 @@ const GuestSecond: FC<IGuestSecondProps> = ({}) => {
   useMemo(() => {}, [])
   useEffect(() => {}, [])
 
-  return <div>GuestSecond</div>
+  return (
+    <div
+      style={{
+        border: 2,
+        padding: 2,
+        borderColor: 'black',
+        borderStyle: 'dashed',
+        margin: 5,
+        width: 500,
+        height: 500
+      }}
+    >
+      GuestSecond
+    </div>
+  )
 }
 
 export default GuestSecond

@@ -7,7 +7,21 @@ const GuestThird: FC<IGuestThirdProps> = ({}) => {
   useMemo(() => {}, [])
   useEffect(() => {}, [])
 
-  return <div>GuestThird</div>
+  return (
+    <div
+      style={{
+        border: 2,
+        padding: 2,
+        borderColor: 'black',
+        borderStyle: 'dashed',
+        margin: 5,
+        width: 500,
+        height: 500
+      }}
+    >
+      GuestThird
+    </div>
+  )
 }
 
 export default GuestThird
