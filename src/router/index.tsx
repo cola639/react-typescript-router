@@ -2,7 +2,7 @@ import { RouteObject } from 'react-router' // route interface
 import routeList from './routeList'
 
 // extend interface RouteObject
-interface RouteMetaObject extends RouteObject {
+export interface RouteMetaObject extends RouteObject {
   children?: RouteMetaObject[]
   meta?: { title: string; icon: string }
   roles?: string[]

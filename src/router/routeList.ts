@@ -11,6 +11,8 @@ import GuestFirst from '../pages/guest/GuestFirst'
 import GuestSecond from '../pages/guest/GuestSecond'
 import GuestThird from '../pages/guest/GuestThird'
 
+import NotFound from '../pages/404'
+
 export default {
   Login,
   LayoutComponent,
@@ -19,5 +21,6 @@ export default {
   AdminThird,
   GuestFirst,
   GuestSecond,
-  GuestThird
+  GuestThird,
+  NotFound
 }
