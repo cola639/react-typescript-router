@@ -1,10 +1,10 @@
-import React, { FC } from 'react'
-import { BrowserRouter, Route, Routes, useRoutes } from 'react-router-dom'
+import { FC, ReactNode } from 'react'
+import { BrowserRouter as Router, Route, Routes, useRoutes } from 'react-router-dom'
 
 import routeList from './router/routeList'
+
 import RequireAuth from './router/RequireAuth'
-import { RouteMetaObject } from './router/index'
-import { asyncRoutes } from './router/index'
+import { baseRoutes, asyncRoutes, RouteMetaObject } from './router'
 
 export interface IApplicationProps {}
 
@@ -21,41 +21,50 @@ const Application: FC<IApplicationProps> = props => {
     NotFound
   } = routeList
 
-  const content = () => useRoutes(asyncRoutes)
-  const user = 'admin'
+  // const BaseRoute = () => useRoutes(baseRoutes)
+  const AsyncRoute = () => useRoutes(asyncRoutes)
+  const GetAllRoutes = () => {
+    const routes = useRoutes([
+      {
+        path: '/login',
+        element: <Login />
+      },
+      {
+        path: '/layout', // layout uri prefix
+        element: <AsyncRoute />
+      },
+      {
+        path: '*', // 404
+        element: <NotFound />
+      }
+    ])
+    return routes
+  }
 
-  const protectedLayout = (
-    <RequireAuth>
-      <LayoutComponent name="test name" />
-    </RequireAuth>
-  )
+  // const protectedLayout = (
+  //   <RequireAuth>
+  //     <LayoutComponent name="test name" />
+  //   </RequireAuth>
+  // )
 
-  // judege auth condition
-  // const withAuth = (component: FC) => {
-  //   return (
-  //     <RequireAuth>
-  //       <component />
-  //     </RequireAuth>
-  //   )
-  // }
+  // const hasPermission = () => {}
 
-  // generate routes
-  // const generateRoute = routeList => {
-  //   routeList.forEach(element => {
-  //     if (element.children.length) return <Route></Route>
+  // const generateRoute = (routeList: RouteMetaObject[]): any => {
+  //   console.log('🚀TCL: >> generateRoute >> routeList', routeList)
 
-  //     return <Route path="" element={protectedLayout}></Route>
+  //   return routeList.forEach(element => {
+  //     if (element.children?.length) return generateRoute(element.children)
+  //     if (element.roles.includes('admin'))
+  //       return <Route path={element.path} element={protectedLayout}></Route>
+
+  //     // return <Route path="" element={protectedLayout}></Route>
   //   })
   // }
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="login" element={<Login />} />
-        {user && <Route path="layout" element={protectedLayout} />}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
+    <Router>
+      <GetAllRoutes />
+    </Router>
   )
 }
 

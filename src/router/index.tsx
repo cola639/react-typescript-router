@@ -5,7 +5,7 @@ import routeList from './routeList'
 export interface RouteMetaObject extends RouteObject {
   children?: RouteMetaObject[]
   meta?: { title: string; icon: string }
-  roles?: string[]
+  roles: string[]
 }
 
 const {
@@ -16,20 +16,34 @@ const {
   AdminThird,
   GuestFirst,
   GuestSecond,
-  GuestThird
+  GuestThird,
+  NotFound
 } = routeList
 
 export const baseRoutes: RouteMetaObject[] = [
   {
+    path: '/login',
+    element: <Login />,
+    children: [],
+    roles: ['admin', 'guest']
+  },
+  {
     path: '/',
     element: <Login />,
-    children: []
+    children: [],
+    roles: ['admin', 'guest']
+  },
+  {
+    path: '/*',
+    element: <NotFound />,
+    children: [],
+    roles: ['admin', 'guest']
   }
 ]
 
 export const asyncRoutes: RouteMetaObject[] = [
   {
-    path: '/layout',
+    path: '',
     element: <LayoutComponent />,
     children: [
       {
@@ -68,6 +82,7 @@ export const asyncRoutes: RouteMetaObject[] = [
         meta: { title: 'guestThird', icon: 'dashboard' },
         roles: ['admin', 'guest']
       }
-    ]
+    ],
+    roles: ['admin', 'guest']
   }
 ]
