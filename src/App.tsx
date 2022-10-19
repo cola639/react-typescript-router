@@ -1,36 +1,31 @@
-import { FC, ReactNode } from 'react'
-import { BrowserRouter as Router, Route, Routes, useRoutes } from 'react-router-dom'
-
+import { FC } from 'react'
+import { BrowserRouter, useRoutes } from 'react-router-dom'
+import { filterAsyncRoutes } from './router/filterRoutes'
 import routeList from './router/routeList'
-
-import RequireAuth from './router/RequireAuth'
-import { baseRoutes, asyncRoutes, RouteMetaObject } from './router'
+import { asyncRoutes } from './router'
 
 export interface IApplicationProps {}
 
 const Application: FC<IApplicationProps> = props => {
-  const {
-    Login,
-    LayoutComponent,
-    AdminFirst,
-    AdminSecond,
-    AdminThird,
-    GuestFirst,
-    GuestSecond,
-    GuestThird,
-    NotFound
-  } = routeList
+  const { Login, NotFound } = routeList
 
-  // const BaseRoute = () => useRoutes(baseRoutes)
-  const AsyncRoute = () => useRoutes(asyncRoutes)
-  const GetAllRoutes = () => {
-    const routes = useRoutes([
+  const role = 'guest' // 'guest' || 'admin'
+  const FilterRoutes = filterAsyncRoutes(asyncRoutes, role)
+  console.log('🚀TCL: >> FilterRoutes', JSON.stringify(FilterRoutes))
+
+  const AsyncRoute = () => useRoutes(FilterRoutes)
+  const GetAllRoutes = () =>
+    useRoutes([
       {
         path: '/login',
         element: <Login />
       },
       {
-        path: '/layout', // layout uri prefix
+        path: '/layout/*', // layout uri prefix
+        element: <AsyncRoute />
+      },
+      {
+        path: '/', // layout uri prefix
         element: <AsyncRoute />
       },
       {
@@ -38,33 +33,11 @@ const Application: FC<IApplicationProps> = props => {
         element: <NotFound />
       }
     ])
-    return routes
-  }
-
-  // const protectedLayout = (
-  //   <RequireAuth>
-  //     <LayoutComponent name="test name" />
-  //   </RequireAuth>
-  // )
-
-  // const hasPermission = () => {}
-
-  // const generateRoute = (routeList: RouteMetaObject[]): any => {
-  //   console.log('🚀TCL: >> generateRoute >> routeList', routeList)
-
-  //   return routeList.forEach(element => {
-  //     if (element.children?.length) return generateRoute(element.children)
-  //     if (element.roles.includes('admin'))
-  //       return <Route path={element.path} element={protectedLayout}></Route>
-
-  //     // return <Route path="" element={protectedLayout}></Route>
-  //   })
-  // }
 
   return (
-    <Router>
+    <BrowserRouter>
       <GetAllRoutes />
-    </Router>
+    </BrowserRouter>
   )
 }
 
