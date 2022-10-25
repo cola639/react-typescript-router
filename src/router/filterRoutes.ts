@@ -5,7 +5,7 @@ import { RouteMetaObject } from './index'
  * @export
  * @param {RouteMetaObject} route
  * @param {string} role
- * @return {*}
+ * @return {boolean}
  */
 function hasPermission(role: string, route: RouteMetaObject) {
   if (route.roles && route.roles.includes(role)) {
